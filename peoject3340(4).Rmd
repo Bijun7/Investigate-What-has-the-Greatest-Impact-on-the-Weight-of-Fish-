@@ -1,0 +1,98 @@
+```{r}
+fish<- read.csv("~/Desktop/fish.csv", header=TRUE)
+```
+```{r}
+pairs(~Weight+Length1+Length2+Length3+Height+Width, data=fish, main="Basic Scatter Plot Matrix")
+```
+```{r}
+cor(fish)
+```
+
+```{r}
+lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish)
+```
+```{r}
+summary(lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish))
+```
+```{r}
+library(car)
+vif(lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish))
+```
+
+```{r}
+library(olsrr)
+```
+```{r}
+ols_step_all_possible(lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish))
+```
+```{r}
+plot(ols_step_all_possible(lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish)))
+```
+```{r}
+ols_step_best_subset(lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish))
+```
+```{r}
+plot(ols_step_best_subset(lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish)))
+```
+#backward
+```{r}
+lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish)
+```
+```{r}
+summary(lm(Weight~Species+Length1+Length2+Length3+Height+Width,data = fish))
+```
+```{r}
+lm(Weight~Species+Length1+Length2+Length3+Height,data = fish)
+```
+```{r}
+summary(lm(Weight~Species+Length1+Length2+Length3+Height,data = fish))
+```
+```{r}
+lm(Weight~Species+Length1+Length2+Length3,data = fish)
+```
+```{r}
+summary(lm(Weight~Species+Length1+Length2+Length3,data = fish))
+```
+```{r}
+lm(Weight~Species+Length1+Length2,data = fish)
+```
+```{r}
+summary(lm(Weight~Species+Length1+Length2,data = fish))
+```
+```{r}
+plot(lm(Weight~Species+Length1+Length2,data = fish))
+```
+```{r}
+lm(Weight~Species+Length1+Length2+I(Length1*Length2),data = fish)
+```
+```{r}
+summary(lm(Weight~Species+Length1+Length2+I(Length1*Length2),data = fish))
+```
+```{r}
+plot(lm(Weight~Species+Length1+Length2+I(Length1*Length2),data = fish))
+```
+```{r}
+library(car)
+vif(lm(Weight~Species+Length1+Length2+I(Length1*Length2),data = fish))
+```
+```{r}
+lm(Weight~Species+I(Length1*Length2),data = fish)
+```
+```{r}
+summary(lm(Weight~Species+I(Length1*Length2),data = fish))
+```
+```{r}
+plot(lm(Weight~Species+I(Length1*Length2),data = fish))
+```
+```{r}
+library(car)
+vif(lm(Weight~Species+I(Length1*Length2),data = fish))
+```
+
+
+
+
+
+
+
+
